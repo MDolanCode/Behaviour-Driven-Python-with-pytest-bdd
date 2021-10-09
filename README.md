@@ -116,6 +116,27 @@ The main benefits of BDD are better collaboration and automation.
 3. Step reuse creates a snowball effect.
 
 
+# ----------------------------------------------
+# Why Choose pytest-bdd?
+# ----------------------------------------------
 
+* pytest is the most popular Python test framework. It is simple yet powerful. It also has plugins for everything imaginable.
+
+* Since pytest-bdd is just a plugin, it can work with other plugins!
+
+    * pytest-cov for code coverage.
+    * pytest-xdist for parallel execution.
+    * pytest-html for HTML test reports.
+    * pytest-django for Django app integration.
+    * pytest-flask for Flask app integration.
+
+
+# ----------------------------------------------
+# Setting up pytest-bdd
+# ----------------------------------------------
+
+1. pip3 install pipenv
+2. pipenv install pytest
+3. pipenv install pytest-bdd
 
 
