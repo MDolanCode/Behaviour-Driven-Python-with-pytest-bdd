@@ -140,3 +140,25 @@ The main benefits of BDD are better collaboration and automation.
 3. pipenv install pytest-bdd
 
 
+# ---------------------------------------------
+# Run the test
+# ---------------------------------------------
+
+pipenv run python3 -m pytest
+
+# ---------------------------------------------
+# test naming convention
+# ---------------------------------------------
+
+* Always use test_some_file.py for tests. This makes it easy for pytest to find the file when running tests.
+* You can run the test this way, but it is more tedious. pipenv run python3 -m pytest tests/step_defs/test_cucumbers_steps.py
+* I do recommend using that prefix as a best practice though, because it's much easier to run all tests with one simple pytest command, 
+  than trying to spell out every single path for every single step definition module.
+
+
+*** Pytest will not allow for running feature files directly. 
+* This may seem odd, but the reason is due to how pytest-bdd has its tests implemented.
+
+* Remember, since it's piggybacking off of pytest, every test is essentially in a test module, those step definition models. 
+  That's why in the step definition modules, we have to link the scenarios by name because that's what tells pytest that, "Hey, this feature file is actually a pytest style test."
+
