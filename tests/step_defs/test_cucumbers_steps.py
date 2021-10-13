@@ -1,43 +1,37 @@
-from functools import partial
 from pytest_bdd import scenarios, parsers, given, when, then
 
 from cucumbers import CucumberBasket
-
-scenarios('../features/cucumbers.feature')
 
 EXTRA_TYPES = {
     'Number': int,
 }
 
-parse_num = partial(parsers.cfparse, extra_types=EXTRA_TYPES)
+CONVERTERS = {
+    'initial': int,
+    'some': int,
+    'total': int,
+}
 
-# @scenario('../features/cucumbers.feature', 'Add cucumbers to a basket')
-# def test_add():
-#     pass
+scenarios('../features/cucumbers.feature', example_converters=CONVERTERS)
 
-# @scenario('../features/cucumbers.feature', 'Remove cucumbers from a basket')
-# def test_remove():
-#     pass
+# Having the two step decorators makes it easy to reuse them in the future.
 
-# This function below is a pytest fixture.
-# It's used by all of the other step definition functions as a fixture.
-# What that means is, when this step is called, and this value is returned, it becomes the fixture value that is dependency-injected 
-# into all of the other step definition functions that declare that a fixture by name as an argument.
-
-# Add parsers
-
-@given(parse_num('the basket has "{initial:Number}" cucumbers'), target_fixture='basket')
+@given(parsers.cfparse('the basket has "{initial:Number}" cucumbers', extra_types=EXTRA_TYPES), target_fixture='basket')
+@given('the basket has "<initial>" cucumbers')
 def basket(initial):
     return CucumberBasket(initial_count=initial)
 
-@when(parse_num('"{some:Number}" cucumbers are added to the basket'))
+@when(parsers.cfparse('"{some:Number}" cucumbers are added to the basket', extra_types=EXTRA_TYPES))
+@when('"<some>" cucumbers are added to the basket')
 def add_cucumbers(basket, some):
     basket.add(some)
 
-@when(parse_num('"{some:Number}" cucumbers are removed from the basket'))
+@when(parsers.cfparse('"{some:Number}" cucumbers are removed from the basket', extra_types=EXTRA_TYPES))
+@when('"<some>" cucumbers are removed from the basket')
 def remove_cucumbers(basket, some):
     basket.remove(some)
 
-@then(parse_num('the basket contains "{total:Number}" cucumbers'))
+@then(parsers.cfparse('the basket contains "{total:Number}" cucumbers', extra_types=EXTRA_TYPES))
+@then('the basket contains "<total>" cucumbers')
 def basket_has_total(basket, total):
     assert basket.count == total
