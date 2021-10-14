@@ -1,3 +1,10 @@
+"""
+If you take a closer look at this “web.feature” file, you'll notice that the tags are only at the feature level, they're not at the scenarios.
+What's really nice about feature level tags, is they inherently apply to all the scenarios within the feature.
+So, even though I don't specifically mark these 2 scenarios as being @web or @duckduckgo, because the feature bears those tags, so too, the scenarios effectively bear them as well.
+"""
+
+@web @duckduckgo
 Feature: DuckDuckGo Web Browsing
     As a web surfer,
     I want to find information online,
