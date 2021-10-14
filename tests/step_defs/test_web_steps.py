@@ -1,3 +1,15 @@
+"""
+This module contains step definitions for web.feature.
+It uses Selenium WebDriver for browser interactions:
+https://www.seleniumhq.org/projects/webdriver/
+Setup and cleanup are handled using hooks.
+For a real test automation project,
+use Page Object Model or Screenplay Pattern to model web interactions.
+Prerequisites:
+ - Firefox must be installed.
+ - geckodriver must be installed and accessible on the system path.
+"""
+
 from _pytest.warning_types import PytestExperimentalApiWarning
 import pytest
 
