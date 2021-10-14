@@ -141,10 +141,23 @@ The main benefits of BDD are better collaboration and automation.
 
 
 # ---------------------------------------------
-# Run the test
+# Commands to run the tests
 # ---------------------------------------------
 
+# Run all tests
 pipenv run python3 -m pytest
+# Run tests by file
+pipenv run python3 -m pytest tests/step_defs/test_cucumbers_steps.py
+# Run by tag
+pipenv run python3 -m pytest -k "cucumber-basket"
+# Run multiple tests that use the same tag
+pipenv run python3 -m pytest -k "duckduckgo"
+# Run tests more specifically with tags
+pipenv run python3 -m pytest -k "duckduckgo and service"
+# Run tests in an "or" situation
+pipenv run python3 -m pytest -k "service or web"
+# Run test "not" with this tag
+pipenv run python3 -m pytest -k "not web"
 
 # ---------------------------------------------
 # test naming convention
