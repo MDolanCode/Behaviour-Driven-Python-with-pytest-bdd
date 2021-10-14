@@ -1,8 +1,10 @@
+@cucumber-basket
 Feature: Cucumber Basket
     As a gardener,
     I want to carry cucumbers in a basket,
     So that I don't drop them all.
 
+@add
 Scenario Outline: Add cucumbers to a basket
     Given the basket has "<initial>" cucumbers
     When "<some>" cucumbers are added to the basket
@@ -16,6 +18,7 @@ Scenario Outline: Add cucumbers to a basket
         | 0         | 3         | 3     |
         | 5         | 5         | 10    |
 
+@remove
 Scenario: Remove cucumbers from a basket
     Given the basket has "8" cucumbers
     When "3" cucumbers are removed from the basket
